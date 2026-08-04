@@ -10,6 +10,8 @@ def test_all_locators(page: Page):
     expect (page.get_by_role("button", name="Implicit Button")).to_be_visible()
     expect (page.get_by_role("link", name="Implicit Link")).to_be_visible()
 
+    #get_by_text
+    expect(page.get_by_text("Locate elements by their visible text content.",exact=True)).to_be_visible()
     
     
 
