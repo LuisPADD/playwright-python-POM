@@ -24,7 +24,8 @@ def test_all_locators(page: Page):
     page.get_by_placeholder("Search For Items...").click()
     page.get_by_placeholder("Enter your password").fill("MinhaSenha")
 
-    time.sleep(3)
-
+    #get_by_alt_text
+    expect(page.get_by_alt_text("python logo")).to_be_visible()
+    expect(page.get_by_alt_text("javascript logo")).to_be_visible()
 
     
