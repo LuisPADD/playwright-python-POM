@@ -16,3 +16,6 @@ def test_actions(page: Page) -> None:
     expect(page.get_by_role("checkbox",name="Feature 1")).to_be_checked()
     page.get_by_role("radio",name="Option B").check()
     expect(page.get_by_role("radio",name="Option B")).to_be_checked()
+
+    # select_option
+    page.get_by_label("Choose an option:").select_option(value="option3")
