@@ -19,6 +19,12 @@ def test_all_locators(page: Page):
     page.get_by_label("Email").fill("teste@gmail.com")
     expect(page.get_by_label("Accept Terms and Conditions")).to_be_visible()
     page.get_by_label("Accept").click()
+
+    #get_by_placeholder
+    page.get_by_placeholder("Search For Items...").click()
+    page.get_by_placeholder("Enter your password").fill("MinhaSenha")
+
     time.sleep(3)
+
 
     
