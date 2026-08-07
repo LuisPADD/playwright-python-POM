@@ -1,6 +1,7 @@
 from playwright.sync_api import Page, expect
 
 def test_actions(page: Page) -> None:
+    page.set_viewport_size({"width":1920,"height":1080})
     page.goto("https://leogcarvalho.github.io/test-automation-practice/")
     
     #page.get_by_role("textbox", name="Username: (admin)").fill("admin")
@@ -41,4 +42,13 @@ def test_actions(page: Page) -> None:
     page.locator('//*[@class="dropdown-content"]/*[text()="Option 1"]').click()
     expect(page).to_have_url("https://leogcarvalho.github.io/test-automation-practice/#option1")
 
+    # file upload
+    page.get_by_role("button", name="Choose File").set_input_files("files/sample1.pdf")
+    expect(page.get_by_text("Selected File: sample1.pdf")).to_be_visible()
 
+    #clear uploaded files
+    page.get_by_role("button", name="Choose File").set_input_files([])
+
+    #drag n drop
+    page.get_by_text("Drag me").drag_to(page.get_by_text("Drop here"))
+    expect(page.get_by_text("Drop here")).to_be_visible()
